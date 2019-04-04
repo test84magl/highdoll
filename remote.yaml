@@ -1,0 +1,28 @@
+apiVersion: gitkube.sh/v1alpha1
+kind: Remote
+metadata:
+  creationTimestamp: null
+  name: example
+  namespace: default
+spec:
+  authorizedKeys:
+  - |
+    ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDRURppHgsw584Cy5TcClG5wCGqmtBhUr8rKT6qyV6ManZI0zm82E/z6qA3spVjTNemcuieMV8RhO8VG+5fFFJQj5zJVhfRCG1Ddbcx26cug3vHtdQEkdQvRrr4Bd7lxZ6DdJUABEE58wXRMd431P5Q4rXVgrmky9Z04yi5+A1482/CoZf/4q1/a/rNwwYCD4BMrKWFfZKjHPIUuriIg5PeFJOESvH4tucfkQjdI49A+ZpmQmZtoJt+RWbYsPXto1CKN2TzazAm5CUEn8E6tDQ8eXEtf6MvjvsJCEw7yswiV6VlZmADktf1szfzt5NcUtkMwRuZmJtQ3I9Cszw7fEPv root@dev1
+  deployments:
+  - containers:
+    - dockerfile: Dockerfile
+      name: app
+      path: ./
+    name: app
+  manifests:
+    helm: {}
+    path: .
+  registry:
+    credentials:
+      secretKeyRef:
+        key: ""
+      secretRef: example-regsecret
+    url: docker.io/suk84rkg
+status:
+  remoteUrl: ""
+  remoteUrlDesc: ""
