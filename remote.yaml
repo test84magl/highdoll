@@ -2,7 +2,7 @@ apiVersion: gitkube.sh/v1alpha1
 kind: Remote
 metadata:
   creationTimestamp: null
-  name: example
+  name: qwe1
   namespace: default
 spec:
   authorizedKeys:
@@ -11,9 +11,9 @@ spec:
   deployments:
   - containers:
     - dockerfile: Dockerfile
-      name: app
+      name: newdoll
       path: ./
-    name: app
+    name: newdoll
   manifests:
     helm: {}
     path: .
@@ -21,7 +21,7 @@ spec:
     credentials:
       secretKeyRef:
         key: ""
-      secretRef: example-regsecret
+      secretRef: qwe1-regsecret
     url: docker.io/suk84rkg
 status:
   remoteUrl: ""
