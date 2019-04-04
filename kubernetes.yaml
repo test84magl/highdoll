@@ -1,0 +1,33 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: newdoll
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: newdoll
+    spec:
+      containers:
+        - name: newdoll
+          image: 'suk84rkg/testwhale:v9'
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: newdoll-service
+  labels:
+    name: newdoll-service
+spec:
+  ports:
+    - port: 80
+      targetPort: 80
+      protocol: TCP
+  selector:
+    app: newdoll
+  type: LoadBalancer
